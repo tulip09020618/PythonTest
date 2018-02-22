@@ -25,7 +25,7 @@ class VideoDownload:
         videoName = self.getVideoName(videoUrl)
         print("视频名称：" + videoName)
 
-        urllib.urlretrieve(videoUrl, videoName)
+        urllib.urlretrieve(videoUrl, videoName, self.cbk)
 
         print("视频下载完成")
 
@@ -33,6 +33,18 @@ class VideoDownload:
     def getVideoName(self, videoUrl):
         items = videoUrl.split('/')
         return items[len(items)-1]
+
+    # 下载进度回调
+    def cbk(self, a, b, c):
+        '''''回调函数
+        @a:已经下载的数据块
+        @b:数据块的大小
+        @c:远程文件的大小
+        '''
+        per = 100.0 * a * b / c
+        if per > 100:
+            per = 100
+        print '正在下载：%.2f%%' % per
 
 
 
