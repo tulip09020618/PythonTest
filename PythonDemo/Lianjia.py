@@ -72,7 +72,7 @@ class Lianjia:
 
     # 获取某一页的URL
     def getPageUrlByNum(self, page_num):
-        page_url = "https://bj.lianjia.com/ershoufang/pg" + str(page_num)
+        page_url = "https://bj.lianjia.com/ershoufang/pg" + str(page_num) + "ea20000bp100ep200"
         print("请求地址：" + page_url)
         return page_url
 
@@ -214,7 +214,7 @@ class Lianjia:
 
             # 将获取到的问题信息保存到数据库中
             if info:
-                self.mysql.insertData("lianjie_beijing", info)
+                self.mysql.insertData("lianjia_beijing_100_200", info)
 
 
 
